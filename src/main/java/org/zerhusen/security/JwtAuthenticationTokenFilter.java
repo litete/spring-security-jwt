@@ -42,6 +42,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
             } catch (IllegalArgumentException e) {
                 logger.error("an error occured during getting username from token", e);
+            } catch (Exception e1) {
+            	logger.error(e1.getMessage());
             }
         } else {
             logger.warn("couldn't find bearer string, will ignore the header");
